@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { createUser } from '../api/api';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 function Register() {
@@ -10,6 +10,7 @@ function Register() {
   const [rol, setRol] = useState('USER');
   const [registered, setRegistered] = useState(false);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -21,6 +22,7 @@ function Register() {
         password,
         rol,
       });
+      navigate('/login');
     } catch (error) {
       console.error('Error al registrar usuario:', error);
     }
@@ -77,7 +79,7 @@ function Register() {
             </div>
             <button type="submit">Registrar</button>
           </form>
-          {error && <p>Error: {error}</p>}
+          {error && <p>{error}</p>}
           <Link to='/account'>
             <button>Regresar</button>
           </Link>
