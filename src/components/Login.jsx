@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Account from './acount';
 import Register from './Register'
 import LoginForm from './LoginForm'
-import Home from './Home'
+import Dashboard from './dashboard'
 
 function Login() {
   return (
@@ -12,7 +12,7 @@ function Login() {
           <Route path='/account' element={<Account />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<LoginForm />} />
-          <Route path='/home' element={<Home />} />
+          <Route path='/dashboard' element={<Dashboard />} />
         </Routes>
       </div>
     </div>

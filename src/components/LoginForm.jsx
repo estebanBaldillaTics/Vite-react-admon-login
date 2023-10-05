@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { loginUser } from '../api/api';
+import { loginUser } from '../models/api';
 
 function LoginForm() {
   const [email, setEmail] = useState('');
@@ -13,7 +13,8 @@ function LoginForm() {
 
     try {
       const response = await loginUser(email, password);
-      navigate('/home');
+      localStorage.setItem('isLoggedIn', 'true');
+      navigate('/dashboard');
     } catch (error) {
       console.error('Error al iniciar sesión:', error);
       setError('Error al iniciar sesión. Verifica tus credenciales.');
