@@ -81,7 +81,7 @@ function Register() {
               <button type='submit'>Registrar</button>
             </div>
             <div className='buttons-register'>
-              <Link to='/account'>
+              <Link to='/'>
                 <button>Regresar</button>
               </Link>
               <Link to='/login'>

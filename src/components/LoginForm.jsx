@@ -13,7 +13,9 @@ function LoginForm() {
 
     try {
       const response = await loginUser(email, password);
+      console.log(response);
       localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('user', response.user.name);
       navigate('/dashboard');
     } catch (error) {
       console.error('Error al iniciar sesión:', error);
@@ -27,7 +29,7 @@ function LoginForm() {
       <div className='form-login'>
         <form onSubmit={handleLogin}>
           <div>
-            <label htmlFor="email">Correo electrónico:</label>
+            <label htmlFor="email">Correo electronico</label>
             <input
               type="email"
               id="email"
@@ -47,7 +49,7 @@ function LoginForm() {
           {error && <p className='error'>{error}</p>}
           <div className='buttons-login'>
             <button type="submit">Iniciar sesión</button>
-            <Link to='/account'>
+            <Link to='/'>
               <button>Regresar</button>
             </Link>
           </div>
