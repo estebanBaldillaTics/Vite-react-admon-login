@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 function Home() {
   const isLoggedIn = localStorage.getItem('isLoggedIn');
+  const user = localStorage.getItem('user');
   const navigate = useNavigate();
   
   const closeSession = () =>{
@@ -12,16 +13,18 @@ function Home() {
 
   if (!isLoggedIn) {
     return (
-      <div>
-        <h1>Necesitas iniciar sesión</h1>
-        <Link to="/login">Iniciar sesión</Link>
+      <div className='header-dashboard'>
+        <div className='login-content-dashboard'>
+          <h1>Necesitas iniciar sesión</h1>
+          <Link to="/login">Iniciar sesión</Link>
+        </div>
       </div>
     )
   }
 
   return (
     <div>
-      <h1>Página de inicio</h1>
+      <h1>Bienvenido {user}</h1>
       <button onClick={closeSession}>Cerrar sesión</button>
     </div>
   );
