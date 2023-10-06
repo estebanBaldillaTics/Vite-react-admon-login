@@ -63,8 +63,39 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
   }
 
+  .login-container-account{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+  }
+
   .error{
     color: #D8000C;
     background-color: #FFBABA;
     border-radius: 4px ;
+  }
+
+  .buttons-login,
+  .buttons-register{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 8px 0 8px 0;
+  }
+
+  .button-register-account{
+    display: flex;
+    flex-direction: column;
+    margin: 8px 16px 8px 16px;
+    
+  }
+  
+  .button-register,
+  .button-login{
+    margin: 38px;
   }

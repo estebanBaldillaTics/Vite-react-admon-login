@@ -24,7 +24,7 @@ function LoginForm() {
   return (
     <div className='login-container'>
       <h1>Iniciar Sesión</h1>
-      <div>
+      <div className='form-login'>
         <form onSubmit={handleLogin}>
           <div>
             <label htmlFor="email">Correo electrónico:</label>
@@ -44,12 +44,14 @@ function LoginForm() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button type="submit">Iniciar sesión</button>
+          {error && <p className='error'>{error}</p>}
+          <div className='buttons-login'>
+            <button type="submit">Iniciar sesión</button>
+            <Link to='/account'>
+              <button>Regresar</button>
+            </Link>
+          </div>
         </form>
-        {error && <p className='error'>{error}</p>}
-        <Link to='/account'>
-          <button>Regresar</button>
-        </Link>
       </div>
     </div>
   );
