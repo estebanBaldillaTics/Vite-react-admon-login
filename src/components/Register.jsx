@@ -1,33 +1,32 @@
-import React, { useState } from 'react';
-import { createUser } from '../models/api';
-import { Link, useNavigate } from 'react-router-dom';
-
+import React, { useState } from 'react'
+import { createUser } from '../models/api'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Register() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [rol, setRol] = useState('USER');
-  const [registered, setRegistered] = useState(false);
-  const [error, setError] = useState(null);
-  const navigate = useNavigate();
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [rol, setRol] = useState('USER')
+  const [registered, setRegistered] = useState(false)
+  const [error, setError] = useState(null)
+  const navigate = useNavigate()
 
-  const handleRegister = async (e) => {
-    e.preventDefault();
+  const handleRegister = async e => {
+    e.preventDefault()
 
     try {
       const response = await createUser({
         name,
         email,
         password,
-        rol,
-      });
-      navigate('/login');
+        rol
+      })
+      navigate('/login')
     } catch (error) {
-      console.error('Error al registrar usuario:', error);
+      setError('Error al registrar usuario. Por favor, verifica tus datos e intenta nuevamente.');
+      console.error('Error al registrar usuario:', error)
     }
-  };
-
+  }
 
   return (
     <div className='register-container'>
@@ -40,56 +39,60 @@ function Register() {
         <div>
           <form onSubmit={handleRegister}>
             <div>
-              <label htmlFor="name">Nombre:</label>
+              <label htmlFor='name'>Nombre:</label>
               <input
-                type="text"
-                id="name"
+                type='text'
+                id='name'
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={e => setName(e.target.value)}
               />
             </div>
             <div>
-              <label htmlFor="email">Correo electrónico:</label>
+              <label htmlFor='email'>Correo electrónico:</label>
               <input
-                type="email"
-                id="email"
+                type='email'
+                id='email'
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={e => setEmail(e.target.value)}
               />
             </div>
             <div>
-              <label htmlFor="password">Contraseña:</label>
+              <label htmlFor='password'>Contraseña:</label>
               <input
-                type="password"
-                id="password"
+                type='password'
+                id='password'
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={e => setPassword(e.target.value)}
               />
             </div>
             <div>
-              <label htmlFor="rol">Rol:</label>
+              <label htmlFor='rol'>Rol:</label>
               <select
-                id="rol"
+                id='rol'
                 value={rol}
-                onChange={(e) => setRol(e.target.value)}
+                onChange={e => setRol(e.target.value)}
               >
-                <option value="USER">Usuario</option>
-                <option value="ADMIN">Administrador</option>
+                <option value='USER'>Usuario</option>
+                <option value='ADMIN'>Administrador</option>
               </select>
             </div>
-            <button type="submit">Registrar</button>
+            {error && <p className='error'>{error}</p>}
+            <div className='button-register-account'>
+              <button type='submit'>Registrar</button>
+            </div>
+            <div className='buttons-register'>
+              <Link to='/account'>
+                <button>Regresar</button>
+              </Link>
+              <Link to='/login'>
+                <button>Iniciar session</button>
+              </Link>
+            </div>
           </form>
-          {error && <p>{error}</p>}
-          <Link to='/account'>
-            <button>Regresar</button>
-          </Link>
-          <Link to='/login'>
-            <button>Iniciar session</button>
-          </Link>
         </div>
       )}
     </div>
-  );
+  )
 }
 
-export default Register;
+export default Register
